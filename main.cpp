@@ -74,18 +74,19 @@ int obtenerTamanoDeArchivo(string nombre_archivo)
 
 bool existeEnArbol(NodoTrinario* raiz, int num)
 {
-  /* bool res = false;
-   for(  NodoTrinario  *t = raiz; t!=NULL; t=t)
-   {
-   if(t==num)
-   res = true;
-   else
-    res = false;
-   }
-*/
-return false;
-   }
-
+bool resul = false;
+if (raiz != NULL)
+if (raiz->num == num)
+resul = true;
+else {
+resul = existeEnArbol(raiz->izq, num);
+if (!resul)
+resul = existeEnArbol(raiz->medio, num);
+if (!resul)
+resul = existeEnArbol(raiz->der, num);
+}
+return resul;
+}
 
 int main ()
 {
